@@ -7,7 +7,7 @@
   <meta name="description" content="Software engineer specializing in simulation software, aerospace systems, and high-performance computing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0e17;
@@ -19,7 +19,7 @@
       --text-bright: #e8ecf1;
       --border: #1e2a3a;
       --font-display: 'Instrument Serif', Georgia, serif;
-      --font-mono: 'DM Mono', 'Courier New', monospace;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
       --max-width: 1100px;
       --gutter: 1.5rem;
     }
@@ -587,6 +587,138 @@
       }
     }
 
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 var(--gutter);
+      background: rgba(10, 14, 23, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 14, 23, 0.95);
+      border-bottom-color: var(--border);
+    }
+
+    .navbar__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.5rem;
+    }
+
+    .navbar__brand {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text-bright);
+      white-space: nowrap;
+    }
+    .navbar__brand:hover { opacity: 0.8; color: var(--text-bright); }
+
+    .navbar__links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .navbar__links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .navbar__links a:hover { color: var(--cyan); opacity: 1; }
+
+    @media (max-width: 767px) {
+      .navbar__links {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .navbar__links a { font-size: 0.6rem; }
+    }
+
+    /* ── Availability Banner ── */
+    .availability {
+      border: 1px solid var(--cyan);
+      background: var(--bg-elevated);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .availability::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .availability__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      color: var(--text-bright);
+      margin-bottom: 0.75rem;
+    }
+
+    .availability__text {
+      font-size: 0.85rem;
+      color: var(--text);
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* ── Contact ── */
+    .contact-content {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .contact-content .section-title {
+      margin-bottom: 1rem;
+    }
+
+    .contact-content p {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .contact-links a:hover { color: var(--cyan); opacity: 1; }
+    .contact-links svg { width: 18px; height: 18px; fill: currentColor; }
+
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -597,6 +729,21 @@
   </style>
 </head>
 <body>
+  <!-- ── Navbar ── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__brand">Marcos Smeets</a>
+      <div class="navbar__links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#titan">Titan</a>
+        <a href="#stack">Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- ── Hero ── -->
   <header class="hero">
     <div class="hero__scan"></div>
@@ -875,6 +1022,47 @@
     </div>
   </section>
 
+  <!-- ── Availability Banner ── -->
+  <section>
+    <div class="container">
+      <div class="availability reveal">
+        <h2 class="availability__title">Available for Remote Opportunities</h2>
+        <p class="availability__text">Based in Brazil, open to remote roles worldwide or relocation. Let's build something great together.</p>
+        <a href="#contact" class="btn">Get in Touch &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-content">
+        <div class="reveal">
+          <p class="section-label">// Contact</p>
+          <h2 class="section-title">Let's Talk</h2>
+          <p>I'm always open to discussing new projects, engineering challenges, or remote opportunities. Feel free to reach out.</p>
+        </div>
+        <div class="contact-links reveal">
+          <a href="mailto:marcosbsmeets@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Email
+          </a>
+          <a href="https://github.com/marcossmeets" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/marcossmeets" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+        <div class="reveal">
+          <a href="mailto:marcosbsmeets@gmail.com" class="btn">Send me an Email &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Footer ── -->
   <footer>
     <div class="container">
@@ -960,6 +1148,14 @@
         { threshold: 0.5 }
       );
       countEls.forEach((el) => countObserver.observe(el));
+
+      // ── Navbar scroll effect ──
+      const navbar = document.getElementById('navbar');
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          navbar.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+      }
 
       // ── Scroll indicator fade ──
       const scrollInd = document.getElementById('scrollIndicator');
