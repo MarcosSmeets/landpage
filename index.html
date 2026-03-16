@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marcos Smeets — Software Engineer</title>
   <meta name="description" content="Software engineer specializing in simulation software, aerospace systems, and high-performance computing.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Marcos Smeets — Software Engineer">
+  <meta property="og:description" content="Software engineer open to remote roles worldwide or relocation. Specializing in backend systems, .NET, Node.js, and Go.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -415,6 +418,17 @@
       opacity: 1;
     }
 
+    .btn--outline {
+      background: transparent;
+      border-color: var(--text-muted);
+      color: var(--text-muted);
+    }
+    .btn--outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: transparent;
+    }
+
     /* ── Tech Stack ── */
     .stack-grid {
       display: grid;
@@ -629,6 +643,7 @@
       display: flex;
       gap: 1.5rem;
       list-style: none;
+      align-items: center;
     }
 
     .navbar__links a {
@@ -639,6 +654,25 @@
       transition: color 0.2s;
     }
     .navbar__links a:hover { color: var(--cyan); opacity: 1; }
+    .navbar__links a.active { color: var(--cyan); }
+
+    /* ── Language toggle ── */
+    .lang-toggle {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.25rem 0.6rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      text-transform: uppercase;
+    }
+    .lang-toggle:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
 
     @media (max-width: 767px) {
       .navbar__links {
@@ -647,6 +681,7 @@
         justify-content: flex-end;
       }
       .navbar__links a { font-size: 0.6rem; }
+      .lang-toggle { font-size: 0.55rem; }
     }
 
     /* ── Availability Banner ── */
@@ -734,12 +769,13 @@
     <div class="navbar__inner">
       <a href="#" class="navbar__brand">Marcos Smeets</a>
       <div class="navbar__links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#experience" data-i18n="nav_experience">Experience</a>
         <a href="#titan">Titan</a>
-        <a href="#stack">Stack</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#stack" data-i18n="nav_stack">Stack</a>
+        <a href="#projects" data-i18n="nav_projects">Projects</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">PT</button>
       </div>
     </div>
   </nav>
@@ -749,8 +785,8 @@
     <div class="hero__scan"></div>
     <div class="container">
       <h1 class="hero__name">Marcos<br>Smeets</h1>
-      <p class="hero__role">&gt; SOFTWARE ENGINEER</p>
-      <p class="hero__intro">Building simulation software and high-performance systems at the intersection of aerospace engineering and modern computing. Focused on physics engines, telemetry pipelines, and tools that push hardware to its limits.</p>
+      <p class="hero__role" data-i18n="hero_role">&gt; SOFTWARE ENGINEER</p>
+      <p class="hero__intro" data-i18n="hero_intro">Building simulation software and high-performance systems at the intersection of aerospace engineering and modern computing. Focused on physics engines, telemetry pipelines, and tools that push hardware to its limits.</p>
       <div class="hero__links">
         <a href="https://github.com/marcossmeets" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -767,7 +803,7 @@
       </div>
     </div>
     <div class="scroll-indicator" id="scrollIndicator">
-      <span>Scroll</span>
+      <span data-i18n="scroll">Scroll</span>
       <div class="scroll-indicator__line"></div>
     </div>
   </header>
@@ -776,30 +812,30 @@
   <section id="about">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">// About</p>
+        <p class="section-label" data-i18n="label_about">// About</p>
       </div>
       <div class="about-grid">
         <div class="about-bio reveal">
-          <p>Software engineer with <strong style="color: var(--text-bright)">3+ years</strong> of professional experience building scalable backend services, REST APIs, and microservices across fintech, creative tech, and consulting industries.</p>
-          <p>I've worked with distributed teams across Brazil and the United States, delivering production systems in .NET, Node.js, and Go. I care about clean architecture, performance optimization, and writing code that scales.</p>
-          <p>On the side, I'm building <strong style="color: var(--text-bright)">Titan</strong> — a high-fidelity physics simulation engine for aerospace applications, combining a C++ core with a .NET integration layer and a React-based mission control frontend.</p>
+          <p data-i18n="bio_1">Software engineer with <strong style="color: var(--text-bright)">3+ years</strong> of professional experience building scalable backend services, REST APIs, and microservices across fintech, creative tech, and consulting industries.</p>
+          <p data-i18n="bio_2">I've worked with distributed teams across Brazil and the United States, delivering production systems in .NET, Node.js, and Go. I care about clean architecture, performance optimization, and writing code that scales.</p>
+          <p data-i18n="bio_3">On the side, I'm building <strong style="color: var(--text-bright)">Titan</strong> — a high-fidelity physics simulation engine for aerospace applications, combining a C++ core with a .NET integration layer and a React-based mission control frontend.</p>
         </div>
         <div class="stats-panel reveal">
           <div class="stat">
             <div class="stat__number" data-count="3">0</div>
-            <div class="stat__label">Years Experience</div>
+            <div class="stat__label" data-i18n="stat_years">Years Experience</div>
           </div>
           <div class="stat">
             <div class="stat__number" data-count="4">0</div>
-            <div class="stat__label">Companies</div>
+            <div class="stat__label" data-i18n="stat_companies">Companies</div>
           </div>
           <div class="stat">
             <div class="stat__number" data-count="30">0</div>
-            <div class="stat__label">Repositories</div>
+            <div class="stat__label" data-i18n="stat_repos">Repositories</div>
           </div>
           <div class="stat">
             <div class="stat__number" data-count="6">0</div>
-            <div class="stat__label">Languages</div>
+            <div class="stat__label" data-i18n="stat_langs">Languages</div>
           </div>
         </div>
       </div>
@@ -810,17 +846,17 @@
   <section id="experience">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">// Experience</p>
-        <h2 class="section-title">Where I've Worked</h2>
+        <p class="section-label" data-i18n="label_experience">// Experience</p>
+        <h2 class="section-title" data-i18n="title_experience">Where I've Worked</h2>
       </div>
       <div class="experience-timeline">
         <div class="exp-item exp-current reveal">
           <div class="exp-header">
-            <span class="exp-role">Software Engineer</span>
+            <span class="exp-role" data-i18n="exp1_role">Software Engineer</span>
             <span class="exp-company">@ Caveo</span>
           </div>
-          <p class="exp-meta">Jan 2025 — Present &middot; Sao Paulo, Brazil &middot; Hybrid</p>
-          <p class="exp-desc">Designing and implementing scalable REST APIs and microservices using Node.js. Improving application performance by optimizing system architecture and database queries. Collaborating closely with cross-functional teams in an agile environment to deliver high-quality solutions.</p>
+          <p class="exp-meta" data-i18n="exp1_meta">Jan 2025 — Present &middot; Sao Paulo, Brazil &middot; Hybrid</p>
+          <p class="exp-desc" data-i18n="exp1_desc">Designing and implementing scalable REST APIs and microservices using Node.js. Improving application performance by optimizing system architecture and database queries. Collaborating closely with cross-functional teams in an agile environment to deliver high-quality solutions.</p>
           <div class="exp-tags">
             <span class="exp-tag">Node.js</span>
             <span class="exp-tag">REST APIs</span>
@@ -831,11 +867,11 @@
 
         <div class="exp-item reveal">
           <div class="exp-header">
-            <span class="exp-role">Software Engineer</span>
+            <span class="exp-role" data-i18n="exp2_role">Software Engineer</span>
             <span class="exp-company">@ XXIII Creative</span>
           </div>
-          <p class="exp-meta">Sep 2024 — Jan 2025 &middot; Florida, USA &middot; Remote</p>
-          <p class="exp-desc">Developed backend solutions with NestJS and RESTful APIs for international clients. Integrated external services to expand platform capabilities. Worked in distributed teams ensuring smooth collaboration and on-time delivery.</p>
+          <p class="exp-meta" data-i18n="exp2_meta">Sep 2024 — Jan 2025 &middot; Florida, USA &middot; Remote</p>
+          <p class="exp-desc" data-i18n="exp2_desc">Developed backend solutions with NestJS and RESTful APIs for international clients. Integrated external services to expand platform capabilities. Worked in distributed teams ensuring smooth collaboration and on-time delivery.</p>
           <div class="exp-tags">
             <span class="exp-tag">NestJS</span>
             <span class="exp-tag">REST APIs</span>
@@ -846,11 +882,11 @@
 
         <div class="exp-item reveal">
           <div class="exp-header">
-            <span class="exp-role">Software Engineer</span>
+            <span class="exp-role" data-i18n="exp3_role">Software Engineer</span>
             <span class="exp-company">@ NYC Bank</span>
           </div>
-          <p class="exp-meta">Aug 2023 — Sep 2024 &middot; On-site</p>
-          <p class="exp-desc">Built and maintained core banking services with ASP.NET Core and REST APIs. Actively contributed to architecture improvements enhancing scalability. Started as Junior, promoted to Software Engineer within 3 months. Participated in code reviews and debugging, improving overall team efficiency.</p>
+          <p class="exp-meta" data-i18n="exp3_meta">Aug 2023 — Sep 2024 &middot; On-site</p>
+          <p class="exp-desc" data-i18n="exp3_desc">Built and maintained core banking services with ASP.NET Core and REST APIs. Actively contributed to architecture improvements enhancing scalability. Started as Junior, promoted to Software Engineer within 3 months. Participated in code reviews and debugging, improving overall team efficiency.</p>
           <div class="exp-tags">
             <span class="exp-tag">ASP.NET Core</span>
             <span class="exp-tag">C#</span>
@@ -863,11 +899,11 @@
 
         <div class="exp-item reveal">
           <div class="exp-header">
-            <span class="exp-role">Junior Software Engineer</span>
+            <span class="exp-role" data-i18n="exp4_role">Junior Software Engineer</span>
             <span class="exp-company">@ Signa Consultoria e Sistemas</span>
           </div>
-          <p class="exp-meta">Mar 2023 — Jul 2023 &middot; Remote</p>
-          <p class="exp-desc">Developed backend applications with C# and .NET Core. Improved system stability through bug fixing and feature enhancements. Supported senior engineers in delivering custom client solutions, gaining solid foundations in agile delivery and best practices.</p>
+          <p class="exp-meta" data-i18n="exp4_meta">Mar 2023 — Jul 2023 &middot; Remote</p>
+          <p class="exp-desc" data-i18n="exp4_desc">Developed backend applications with C# and .NET Core. Improved system stability through bug fixing and feature enhancements. Supported senior engineers in delivering custom client solutions, gaining solid foundations in agile delivery and best practices.</p>
           <div class="exp-tags">
             <span class="exp-tag">C#</span>
             <span class="exp-tag">.NET Core</span>
@@ -884,34 +920,34 @@
   <section class="titan" id="titan">
     <div class="container">
       <div class="reveal">
-        <p class="section-label" style="text-align:center">// Featured Project</p>
+        <p class="section-label" style="text-align:center" data-i18n="label_titan">// Featured Project</p>
         <h2 class="titan__title">Titan</h2>
-        <p class="titan__subtitle">High-fidelity physics simulation engine for aerospace applications. C++ core, .NET integration, React mission control.</p>
+        <p class="titan__subtitle" data-i18n="titan_subtitle">High-fidelity physics simulation engine for aerospace applications. C++ core, .NET integration, React mission control.</p>
       </div>
       <div class="titan-features">
         <div class="titan-feature reveal">
           <div class="titan-feature__tag">[PHYSICS]</div>
-          <p class="titan-feature__text">N-body gravitational simulation with configurable integrators and high-precision orbital mechanics solvers.</p>
+          <p class="titan-feature__text" data-i18n="titan_physics">N-body gravitational simulation with configurable integrators and high-precision orbital mechanics solvers.</p>
         </div>
         <div class="titan-feature reveal">
           <div class="titan-feature__tag">[INTEGRATION]</div>
-          <p class="titan-feature__text">.NET wrapper exposing the C++ engine through a clean, idiomatic C# API for rapid application development.</p>
+          <p class="titan-feature__text" data-i18n="titan_integration">.NET wrapper exposing the C++ engine through a clean, idiomatic C# API for rapid application development.</p>
         </div>
         <div class="titan-feature reveal">
           <div class="titan-feature__tag">[ATTITUDE]</div>
-          <p class="titan-feature__text">Quaternion-based attitude determination and control system with reaction wheel and thruster models.</p>
+          <p class="titan-feature__text" data-i18n="titan_attitude">Quaternion-based attitude determination and control system with reaction wheel and thruster models.</p>
         </div>
         <div class="titan-feature reveal">
           <div class="titan-feature__tag">[TELEMETRY]</div>
-          <p class="titan-feature__text">Real-time data streaming pipeline for simulation state visualization and post-run analysis.</p>
+          <p class="titan-feature__text" data-i18n="titan_telemetry">Real-time data streaming pipeline for simulation state visualization and post-run analysis.</p>
         </div>
         <div class="titan-feature reveal">
           <div class="titan-feature__tag">[INTERFACE]</div>
-          <p class="titan-feature__text">React-based mission control dashboard with live telemetry charts, 3D orbit visualization, and scenario management.</p>
+          <p class="titan-feature__text" data-i18n="titan_interface">React-based mission control dashboard with live telemetry charts, 3D orbit visualization, and scenario management.</p>
         </div>
         <div class="titan-feature reveal">
           <div class="titan-feature__tag">[PRESETS]</div>
-          <p class="titan-feature__text">Pre-configured simulation scenarios including LEO, GEO, lunar transfer, and interplanetary trajectory templates.</p>
+          <p class="titan-feature__text" data-i18n="titan_presets">Pre-configured simulation scenarios including LEO, GEO, lunar transfer, and interplanetary trajectory templates.</p>
         </div>
       </div>
       <div class="titan-tech reveal">
@@ -924,7 +960,7 @@
         <span class="badge">Docker</span>
       </div>
       <div class="titan-cta reveal">
-        <a href="https://github.com/marcossmeets/titan" class="btn" target="_blank" rel="noopener">View Project &rarr;</a>
+        <a href="https://github.com/marcossmeets/titan" class="btn" target="_blank" rel="noopener" data-i18n="btn_view_project">View Project &rarr;</a>
       </div>
     </div>
   </section>
@@ -933,12 +969,12 @@
   <section id="stack">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">// Tech Stack</p>
-        <h2 class="section-title">Tools & Technologies</h2>
+        <p class="section-label" data-i18n="label_stack">// Tech Stack</p>
+        <h2 class="section-title" data-i18n="title_stack">Tools & Technologies</h2>
       </div>
       <div class="stack-grid">
         <div class="reveal">
-          <h3 class="stack-category__title">Languages</h3>
+          <h3 class="stack-category__title" data-i18n="stack_languages">Languages</h3>
           <div class="stack-items">
             <span class="stack-item">C++</span>
             <span class="stack-item">C#</span>
@@ -959,7 +995,7 @@
           </div>
         </div>
         <div class="reveal">
-          <h3 class="stack-category__title">Infrastructure</h3>
+          <h3 class="stack-category__title" data-i18n="stack_infra">Infrastructure</h3>
           <div class="stack-items">
             <span class="stack-item">Docker</span>
             <span class="stack-item">PostgreSQL</span>
@@ -976,13 +1012,13 @@
   <section id="projects">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">// Projects</p>
-        <h2 class="section-title">Other Work</h2>
+        <p class="section-label" data-i18n="label_projects">// Projects</p>
+        <h2 class="section-title" data-i18n="title_projects">Other Work</h2>
       </div>
       <div class="projects-grid">
         <a class="project-card reveal" href="https://github.com/marcossmeets" target="_blank" rel="noopener">
           <h3 class="project-card__name">orbit-propagator</h3>
-          <p class="project-card__desc">Numerical orbit propagation library with support for perturbation models and multiple integration schemes.</p>
+          <p class="project-card__desc" data-i18n="proj1_desc">Numerical orbit propagation library with support for perturbation models and multiple integration schemes.</p>
           <div class="project-card__tech">
             <span>C++</span>
             <span>CMake</span>
@@ -990,7 +1026,7 @@
         </a>
         <a class="project-card reveal" href="https://github.com/marcossmeets" target="_blank" rel="noopener">
           <h3 class="project-card__name">telemetry-dashboard</h3>
-          <p class="project-card__desc">Real-time telemetry visualization tool for streaming sensor data with configurable chart layouts.</p>
+          <p class="project-card__desc" data-i18n="proj2_desc">Real-time telemetry visualization tool for streaming sensor data with configurable chart layouts.</p>
           <div class="project-card__tech">
             <span>TypeScript</span>
             <span>React</span>
@@ -999,7 +1035,7 @@
         </a>
         <a class="project-card reveal" href="https://github.com/marcossmeets" target="_blank" rel="noopener">
           <h3 class="project-card__name">config-service</h3>
-          <p class="project-card__desc">Lightweight configuration management microservice with versioning and environment-based overrides.</p>
+          <p class="project-card__desc" data-i18n="proj3_desc">Lightweight configuration management microservice with versioning and environment-based overrides.</p>
           <div class="project-card__tech">
             <span>Go</span>
             <span>PostgreSQL</span>
@@ -1008,14 +1044,14 @@
         </a>
         <a class="project-card reveal" href="https://github.com/marcossmeets" target="_blank" rel="noopener">
           <h3 class="project-card__name">sim-benchmarks</h3>
-          <p class="project-card__desc">Performance benchmarking suite for numerical simulation workloads across different hardware configurations.</p>
+          <p class="project-card__desc" data-i18n="proj4_desc">Performance benchmarking suite for numerical simulation workloads across different hardware configurations.</p>
           <div class="project-card__tech">
             <span>C++</span>
             <span>Python</span>
           </div>
         </a>
         <a class="cta-card reveal" href="https://github.com/marcossmeets?tab=repositories" target="_blank" rel="noopener">
-          <p class="cta-card__text">View all 30+ repositories</p>
+          <p class="cta-card__text" data-i18n="proj_cta">View all 30+ repositories</p>
           <span class="btn">GitHub &rarr;</span>
         </a>
       </div>
@@ -1026,9 +1062,9 @@
   <section>
     <div class="container">
       <div class="availability reveal">
-        <h2 class="availability__title">Available for Remote Opportunities</h2>
-        <p class="availability__text">Based in Brazil, open to remote roles worldwide or relocation. Let's build something great together.</p>
-        <a href="#contact" class="btn">Get in Touch &rarr;</a>
+        <h2 class="availability__title" data-i18n="avail_title">Available for Remote Opportunities</h2>
+        <p class="availability__text" data-i18n="avail_text">Based in Brazil, open to remote roles worldwide or relocation. Let's build something great together.</p>
+        <a href="#contact" class="btn" data-i18n="btn_get_in_touch">Get in Touch &rarr;</a>
       </div>
     </div>
   </section>
@@ -1038,9 +1074,9 @@
     <div class="container">
       <div class="contact-content">
         <div class="reveal">
-          <p class="section-label">// Contact</p>
-          <h2 class="section-title">Let's Talk</h2>
-          <p>I'm always open to discussing new projects, engineering challenges, or remote opportunities. Feel free to reach out.</p>
+          <p class="section-label" data-i18n="label_contact">// Contact</p>
+          <h2 class="section-title" data-i18n="title_contact">Let's Talk</h2>
+          <p data-i18n="contact_text">I'm always open to discussing new projects, engineering challenges, or remote opportunities. Feel free to reach out.</p>
         </div>
         <div class="contact-links reveal">
           <a href="mailto:marcosbsmeets@gmail.com">
@@ -1057,7 +1093,8 @@
           </a>
         </div>
         <div class="reveal">
-          <a href="mailto:marcosbsmeets@gmail.com" class="btn">Send me an Email &rarr;</a>
+          <a href="mailto:marcosbsmeets@gmail.com" class="btn" data-i18n="btn_email">Send me an Email &rarr;</a>
+          <a href="marcos_smeets_cv.pdf" class="btn btn--outline" download data-i18n="btn_resume">Download Resume &rarr;</a>
         </div>
       </div>
     </div>
@@ -1081,7 +1118,7 @@
             Email
           </a>
         </div>
-        <p class="copyright">&copy; 2026 Marcos Smeets. All rights reserved.</p>
+        <p class="copyright" data-i18n="copyright">&copy; 2026 Marcos Smeets. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -1089,6 +1126,171 @@
   <script>
     (function () {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ── i18n ──
+      const translations = {
+        pt: {
+          nav_about: 'Sobre',
+          nav_experience: 'Experiência',
+          nav_stack: 'Stack',
+          nav_projects: 'Projetos',
+          nav_contact: 'Contato',
+          hero_role: '> ENGENHEIRO DE SOFTWARE',
+          hero_intro: 'Desenvolvendo software de simulação e sistemas de alta performance na interseção entre engenharia aeroespacial e computação moderna. Focado em motores de física, pipelines de telemetria e ferramentas que levam o hardware ao limite.',
+          scroll: 'Rolar',
+          label_about: '// Sobre',
+          label_experience: '// Experiência',
+          label_titan: '// Projeto Destaque',
+          label_stack: '// Tech Stack',
+          label_projects: '// Projetos',
+          label_contact: '// Contato',
+          title_experience: 'Onde Trabalhei',
+          title_stack: 'Ferramentas & Tecnologias',
+          title_projects: 'Outros Trabalhos',
+          title_contact: 'Vamos Conversar',
+          bio_1: 'Engenheiro de software com <strong style="color: var(--text-bright)">3+ anos</strong> de experiência profissional construindo serviços backend escaláveis, REST APIs e microsserviços nos setores de fintech, tecnologia criativa e consultoria.',
+          bio_2: 'Trabalhei com equipes distribuídas no Brasil e nos Estados Unidos, entregando sistemas em produção com .NET, Node.js e Go. Me importo com arquitetura limpa, otimização de performance e código que escala.',
+          bio_3: 'Paralelamente, estou construindo o <strong style="color: var(--text-bright)">Titan</strong> — um motor de simulação física de alta fidelidade para aplicações aeroespaciais, combinando um core em C++ com uma camada de integração .NET e um frontend React de controle de missão.',
+          stat_years: 'Anos de Experiência',
+          stat_companies: 'Empresas',
+          stat_repos: 'Repositórios',
+          stat_langs: 'Linguagens',
+          exp1_role: 'Engenheiro de Software',
+          exp1_meta: 'Jan 2025 — Presente · São Paulo, Brasil · Híbrido',
+          exp1_desc: 'Projetando e implementando REST APIs e microsserviços escaláveis com Node.js. Melhorando performance de aplicações otimizando arquitetura de sistemas e queries de banco de dados. Colaborando com equipes multidisciplinares em ambiente ágil para entregar soluções de alta qualidade.',
+          exp2_role: 'Engenheiro de Software',
+          exp2_meta: 'Set 2024 — Jan 2025 · Florida, EUA · Remoto',
+          exp2_desc: 'Desenvolvi soluções backend com NestJS e APIs RESTful para clientes internacionais. Integrei serviços externos para expandir as capacidades da plataforma. Trabalhei em equipes distribuídas garantindo colaboração fluida e entregas no prazo.',
+          exp3_role: 'Engenheiro de Software',
+          exp3_meta: 'Ago 2023 — Set 2024 · Presencial',
+          exp3_desc: 'Construí e mantive serviços bancários core com ASP.NET Core e REST APIs. Contribuí ativamente para melhorias de arquitetura aumentando a escalabilidade. Comecei como Júnior, promovido a Engenheiro de Software em 3 meses. Participei de code reviews e debugging, melhorando a eficiência geral do time.',
+          exp4_role: 'Engenheiro de Software Júnior',
+          exp4_meta: 'Mar 2023 — Jul 2023 · Remoto',
+          exp4_desc: 'Desenvolvi aplicações backend com C# e .NET Core. Melhorei a estabilidade do sistema através de correção de bugs e melhorias de funcionalidades. Apoiei engenheiros seniores na entrega de soluções customizadas, adquirindo fundamentos sólidos em entrega ágil e boas práticas.',
+          titan_subtitle: 'Motor de simulação física de alta fidelidade para aplicações aeroespaciais. Core em C++, integração .NET, controle de missão em React.',
+          titan_physics: 'Simulação gravitacional N-corpos com integradores configuráveis e solvers de mecânica orbital de alta precisão.',
+          titan_integration: 'Wrapper .NET expondo o motor C++ através de uma API C# limpa e idiomática para desenvolvimento rápido de aplicações.',
+          titan_attitude: 'Sistema de determinação e controle de atitude baseado em quaternions com modelos de reaction wheel e thrusters.',
+          titan_telemetry: 'Pipeline de streaming de dados em tempo real para visualização do estado da simulação e análise pós-execução.',
+          titan_interface: 'Dashboard de controle de missão em React com gráficos de telemetria ao vivo, visualização 3D de órbitas e gerenciamento de cenários.',
+          titan_presets: 'Cenários de simulação pré-configurados incluindo LEO, GEO, transferência lunar e templates de trajetórias interplanetárias.',
+          btn_view_project: 'Ver Projeto →',
+          stack_languages: 'Linguagens',
+          stack_infra: 'Infraestrutura',
+          proj1_desc: 'Biblioteca de propagação orbital numérica com suporte a modelos de perturbação e múltiplos esquemas de integração.',
+          proj2_desc: 'Ferramenta de visualização de telemetria em tempo real para streaming de dados de sensores com layouts de gráficos configuráveis.',
+          proj3_desc: 'Microsserviço leve de gerenciamento de configuração com versionamento e overrides baseados em ambiente.',
+          proj4_desc: 'Suite de benchmarking de performance para workloads de simulação numérica em diferentes configurações de hardware.',
+          proj_cta: 'Ver todos os 30+ repositórios',
+          avail_title: 'Disponível para Oportunidades Remotas',
+          avail_text: 'Baseado no Brasil, aberto a vagas remotas no mundo todo ou realocação. Vamos construir algo incrível juntos.',
+          btn_get_in_touch: 'Entre em Contato →',
+          contact_text: 'Estou sempre aberto a discutir novos projetos, desafios de engenharia ou oportunidades remotas. Fique à vontade para entrar em contato.',
+          btn_email: 'Me Envie um Email →',
+          btn_resume: 'Baixar Currículo →',
+          copyright: '© 2026 Marcos Smeets. Todos os direitos reservados.'
+        },
+        en: {
+          nav_about: 'About',
+          nav_experience: 'Experience',
+          nav_stack: 'Stack',
+          nav_projects: 'Projects',
+          nav_contact: 'Contact',
+          hero_role: '> SOFTWARE ENGINEER',
+          hero_intro: 'Building simulation software and high-performance systems at the intersection of aerospace engineering and modern computing. Focused on physics engines, telemetry pipelines, and tools that push hardware to its limits.',
+          scroll: 'Scroll',
+          label_about: '// About',
+          label_experience: '// Experience',
+          label_titan: '// Featured Project',
+          label_stack: '// Tech Stack',
+          label_projects: '// Projects',
+          label_contact: '// Contact',
+          title_experience: "Where I've Worked",
+          title_stack: 'Tools & Technologies',
+          title_projects: 'Other Work',
+          title_contact: "Let's Talk",
+          bio_1: 'Software engineer with <strong style="color: var(--text-bright)">3+ years</strong> of professional experience building scalable backend services, REST APIs, and microservices across fintech, creative tech, and consulting industries.',
+          bio_2: "I've worked with distributed teams across Brazil and the United States, delivering production systems in .NET, Node.js, and Go. I care about clean architecture, performance optimization, and writing code that scales.",
+          bio_3: 'On the side, I\'m building <strong style="color: var(--text-bright)">Titan</strong> — a high-fidelity physics simulation engine for aerospace applications, combining a C++ core with a .NET integration layer and a React-based mission control frontend.',
+          stat_years: 'Years Experience',
+          stat_companies: 'Companies',
+          stat_repos: 'Repositories',
+          stat_langs: 'Languages',
+          exp1_role: 'Software Engineer',
+          exp1_meta: 'Jan 2025 — Present · Sao Paulo, Brazil · Hybrid',
+          exp1_desc: 'Designing and implementing scalable REST APIs and microservices using Node.js. Improving application performance by optimizing system architecture and database queries. Collaborating closely with cross-functional teams in an agile environment to deliver high-quality solutions.',
+          exp2_role: 'Software Engineer',
+          exp2_meta: 'Sep 2024 — Jan 2025 · Florida, USA · Remote',
+          exp2_desc: 'Developed backend solutions with NestJS and RESTful APIs for international clients. Integrated external services to expand platform capabilities. Worked in distributed teams ensuring smooth collaboration and on-time delivery.',
+          exp3_role: 'Software Engineer',
+          exp3_meta: 'Aug 2023 — Sep 2024 · On-site',
+          exp3_desc: 'Built and maintained core banking services with ASP.NET Core and REST APIs. Actively contributed to architecture improvements enhancing scalability. Started as Junior, promoted to Software Engineer within 3 months. Participated in code reviews and debugging, improving overall team efficiency.',
+          exp4_role: 'Junior Software Engineer',
+          exp4_meta: 'Mar 2023 — Jul 2023 · Remote',
+          exp4_desc: 'Developed backend applications with C# and .NET Core. Improved system stability through bug fixing and feature enhancements. Supported senior engineers in delivering custom client solutions, gaining solid foundations in agile delivery and best practices.',
+          titan_subtitle: 'High-fidelity physics simulation engine for aerospace applications. C++ core, .NET integration, React mission control.',
+          titan_physics: 'N-body gravitational simulation with configurable integrators and high-precision orbital mechanics solvers.',
+          titan_integration: '.NET wrapper exposing the C++ engine through a clean, idiomatic C# API for rapid application development.',
+          titan_attitude: 'Quaternion-based attitude determination and control system with reaction wheel and thruster models.',
+          titan_telemetry: 'Real-time data streaming pipeline for simulation state visualization and post-run analysis.',
+          titan_interface: 'React-based mission control dashboard with live telemetry charts, 3D orbit visualization, and scenario management.',
+          titan_presets: 'Pre-configured simulation scenarios including LEO, GEO, lunar transfer, and interplanetary trajectory templates.',
+          btn_view_project: 'View Project →',
+          stack_languages: 'Languages',
+          stack_infra: 'Infrastructure',
+          proj1_desc: 'Numerical orbit propagation library with support for perturbation models and multiple integration schemes.',
+          proj2_desc: 'Real-time telemetry visualization tool for streaming sensor data with configurable chart layouts.',
+          proj3_desc: 'Lightweight configuration management microservice with versioning and environment-based overrides.',
+          proj4_desc: 'Performance benchmarking suite for numerical simulation workloads across different hardware configurations.',
+          proj_cta: 'View all 30+ repositories',
+          avail_title: 'Available for Remote Opportunities',
+          avail_text: "Based in Brazil, open to remote roles worldwide or relocation. Let's build something great together.",
+          btn_get_in_touch: 'Get in Touch →',
+          contact_text: "I'm always open to discussing new projects, engineering challenges, or remote opportunities. Feel free to reach out.",
+          btn_email: 'Send me an Email →',
+          btn_resume: 'Download Resume →',
+          copyright: '© 2026 Marcos Smeets. All rights reserved.'
+        }
+      };
+
+      // Elements that use innerHTML (contain HTML tags)
+      const htmlKeys = new Set(['bio_1', 'bio_2', 'bio_3']);
+
+      let currentLang = localStorage.getItem('lang') || 'en';
+
+      function applyLang(lang) {
+        const dict = translations[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n');
+          if (dict[key]) {
+            if (htmlKeys.has(key)) {
+              el.innerHTML = dict[key];
+            } else {
+              el.textContent = dict[key];
+            }
+          }
+        });
+        var toggle = document.getElementById('langToggle');
+        if (toggle) {
+          toggle.textContent = lang === 'en' ? 'PT' : 'EN';
+          toggle.setAttribute('aria-label', lang === 'en' ? 'Mudar para Português' : 'Switch to English');
+        }
+        localStorage.setItem('lang', lang);
+        currentLang = lang;
+      }
+
+      // Apply saved language on load
+      if (currentLang === 'pt') {
+        applyLang('pt');
+      }
+
+      var langBtn = document.getElementById('langToggle');
+      if (langBtn) {
+        langBtn.addEventListener('click', function () {
+          applyLang(currentLang === 'en' ? 'pt' : 'en');
+        });
+      }
 
       // ── Scroll reveal ──
       if (!reducedMotion) {
@@ -1156,6 +1358,24 @@
           navbar.classList.toggle('scrolled', window.scrollY > 50);
         }, { passive: true });
       }
+
+      // ── Active navbar link highlight ──
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.navbar__links a');
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach((link) => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+              });
+            }
+          });
+        },
+        { threshold: 0.2, rootMargin: '-56px 0px -40% 0px' }
+      );
+      sections.forEach((s) => sectionObserver.observe(s));
 
       // ── Scroll indicator fade ──
       const scrollInd = document.getElementById('scrollIndicator');
