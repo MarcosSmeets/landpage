@@ -225,6 +225,94 @@
       margin-top: 0.4rem;
     }
 
+    /* ── Experience ── */
+    .experience-timeline {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--cyan), var(--border) 80%, transparent);
+    }
+
+    .exp-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+    }
+
+    .exp-item:last-child { padding-bottom: 0; }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 0.45rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--cyan);
+    }
+
+    .exp-item.exp-current::before {
+      background: var(--cyan);
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    }
+
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-role {
+      font-size: 0.9rem;
+      color: var(--text-bright);
+      font-weight: 500;
+    }
+
+    .exp-company {
+      font-size: 0.8rem;
+      color: var(--cyan);
+    }
+
+    .exp-meta {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-desc {
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .exp-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
     /* ── Titan ── */
     .titan {
       border-top: 1px solid var(--border);
@@ -463,6 +551,16 @@
         align-items: start;
       }
 
+      .about-full {
+        grid-column: 1 / -1;
+      }
+
+      .experience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 3rem;
+      }
+
       .titan-features {
         grid-template-columns: 1fr 1fr;
       }
@@ -535,11 +633,19 @@
       </div>
       <div class="about-grid">
         <div class="about-bio reveal">
-          <p>I'm a software engineer with a deep focus on simulation, aerospace systems, and performance-critical applications. My work bridges the gap between scientific computing and modern software engineering practices.</p>
-          <p>I build systems where precision matters — from orbital mechanics solvers to real-time telemetry dashboards. I care about correctness, performance, and making complex systems accessible through well-designed interfaces.</p>
-          <p>Currently developing <strong style="color: var(--text-bright)">Titan</strong>, a high-fidelity physics simulation engine designed for aerospace applications, combining a C++ core with a .NET integration layer and a React-based mission control frontend.</p>
+          <p>Software engineer with <strong style="color: var(--text-bright)">3+ years</strong> of professional experience building scalable backend services, REST APIs, and microservices across fintech, creative tech, and consulting industries.</p>
+          <p>I've worked with distributed teams across Brazil and the United States, delivering production systems in .NET, Node.js, and Go. I care about clean architecture, performance optimization, and writing code that scales.</p>
+          <p>On the side, I'm building <strong style="color: var(--text-bright)">Titan</strong> — a high-fidelity physics simulation engine for aerospace applications, combining a C++ core with a .NET integration layer and a React-based mission control frontend.</p>
         </div>
         <div class="stats-panel reveal">
+          <div class="stat">
+            <div class="stat__number" data-count="3">0</div>
+            <div class="stat__label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-count="4">0</div>
+            <div class="stat__label">Companies</div>
+          </div>
           <div class="stat">
             <div class="stat__number" data-count="30">0</div>
             <div class="stat__label">Repositories</div>
@@ -548,13 +654,79 @@
             <div class="stat__number" data-count="6">0</div>
             <div class="stat__label">Languages</div>
           </div>
-          <div class="stat">
-            <div class="stat__number" data-count="5">0</div>
-            <div class="stat__label">Years C++</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section id="experience">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">// Experience</p>
+        <h2 class="section-title">Where I've Worked</h2>
+      </div>
+      <div class="experience-timeline">
+        <div class="exp-item exp-current reveal">
+          <div class="exp-header">
+            <span class="exp-role">Software Engineer</span>
+            <span class="exp-company">@ Caveo</span>
           </div>
-          <div class="stat">
-            <div class="stat__number" data-count="3">0</div>
-            <div class="stat__label">Active Projects</div>
+          <p class="exp-meta">Jan 2025 — Present &middot; Sao Paulo, Brazil &middot; Hybrid</p>
+          <p class="exp-desc">Designing and implementing scalable REST APIs and microservices using Node.js. Improving application performance by optimizing system architecture and database queries. Collaborating closely with cross-functional teams in an agile environment to deliver high-quality solutions.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Node.js</span>
+            <span class="exp-tag">REST APIs</span>
+            <span class="exp-tag">PostgreSQL</span>
+            <span class="exp-tag">Microservices</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-header">
+            <span class="exp-role">Software Engineer</span>
+            <span class="exp-company">@ XXIII Creative</span>
+          </div>
+          <p class="exp-meta">Sep 2024 — Jan 2025 &middot; Florida, USA &middot; Remote</p>
+          <p class="exp-desc">Developed backend solutions with NestJS and RESTful APIs for international clients. Integrated external services to expand platform capabilities. Worked in distributed teams ensuring smooth collaboration and on-time delivery.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">NestJS</span>
+            <span class="exp-tag">REST APIs</span>
+            <span class="exp-tag">Git</span>
+            <span class="exp-tag">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-header">
+            <span class="exp-role">Software Engineer</span>
+            <span class="exp-company">@ NYC Bank</span>
+          </div>
+          <p class="exp-meta">Aug 2023 — Sep 2024 &middot; On-site</p>
+          <p class="exp-desc">Built and maintained core banking services with ASP.NET Core and REST APIs. Actively contributed to architecture improvements enhancing scalability. Started as Junior, promoted to Software Engineer within 3 months. Participated in code reviews and debugging, improving overall team efficiency.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">ASP.NET Core</span>
+            <span class="exp-tag">C#</span>
+            <span class="exp-tag">SQL</span>
+            <span class="exp-tag">Go</span>
+            <span class="exp-tag">DDD</span>
+            <span class="exp-tag">.NET Core</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-header">
+            <span class="exp-role">Junior Software Engineer</span>
+            <span class="exp-company">@ Signa Consultoria e Sistemas</span>
+          </div>
+          <p class="exp-meta">Mar 2023 — Jul 2023 &middot; Remote</p>
+          <p class="exp-desc">Developed backend applications with C# and .NET Core. Improved system stability through bug fixing and feature enhancements. Supported senior engineers in delivering custom client solutions, gaining solid foundations in agile delivery and best practices.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">C#</span>
+            <span class="exp-tag">.NET Core</span>
+            <span class="exp-tag">ASP.NET</span>
+            <span class="exp-tag">SQL</span>
+            <span class="exp-tag">REST APIs</span>
           </div>
         </div>
       </div>
